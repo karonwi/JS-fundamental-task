@@ -1,9 +1,17 @@
 function letterOccurence(str){
- let wordObj={};
- let word="";
- for ( let i =0; i<str.length; i++){
-  wordObj[str[i]] = ++wordObj[str[i]] || 1;
- }
- console.log(wordObj);
+ let splitted = str.toLowerCase().split("");
+ let obj={};
+ splitted.forEach(char=>{
+  if(!obj[char]){obj[char]=1;}
+  else{obj[char]++;}
+ })
+ let arrObj= obj[splitted[0]];
+ for(let i=0; i<splitted.length;i++){
+  if(obj[splitted[i]] > arrObj){
+    arrObj=obj[splitted[i]];
+   }
+  }
+  let result = Object.keys(obj).find(key=>obj[key]==arrObj)
+  console.log(result)
 }
-console.log(letterOccurence())
+console.log(letterOccurence("hello world"))
